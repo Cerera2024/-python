@@ -1,0 +1,5 @@
+def square(side):
+    print(side * side)
+
+
+square(2)
