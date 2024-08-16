@@ -1,0 +1,6 @@
+def bank(num, year):
+    for i in range(year):
+        num = num + num / 10
+        print(num)
+
+bank(2000, 10)

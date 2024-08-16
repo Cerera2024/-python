@@ -1,0 +1,8 @@
+def is_year_leap(num):
+    if num % 4 == 0:
+        print("год", num, ":", True)
+    else:
+        print("год", str(num) + ":", False)
+    
+
+is_year_leap(2024)
