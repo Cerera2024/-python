@@ -1,14 +1,15 @@
 def month_to_season(num):
-    if num == 12 or num == 1 or num == 2:
-        print("Зима")
-    elif num == 3 or num == 4 or num == 5:
-        print("Весна")
-    elif num == 6 or num == 7 or num == 8:
-        print("Лето")
-    elif num == 9 or num == 10 or num == 11:
-        print("Осень")
+    if num in [12,1,2]:
+        return "Зима"
+    elif num in [3,4,5]:
+        return "Весна"
+    elif num in [6,7,8]:
+        return "Лето"
+    elif num in [9,10,11]:
+        return "Осень"
     else:
-        print("Нет такого сезона")
-
-
-month_to_season(21)
+        return "Неверный номер месяца"
+        
+print(month_to_season(1))
+print(month_to_season(5))
+print(month_to_season(6))
