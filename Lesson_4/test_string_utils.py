@@ -2,6 +2,7 @@ import pytest
 from string_utils import StringUtils
 
 @pytest.fixture
+
 def string_utils():
     return StringUtils()
 
