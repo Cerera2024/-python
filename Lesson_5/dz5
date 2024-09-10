@@ -1,0 +1,644 @@
+{
+	"info": {
+		"_postman_id": "3a0b503f-3ae4-42a7-a3a2-ba6d2b8d2048",
+		"name": "dz5",
+		"description": "Инструмент программного доступа к данным сервиса о маршрутах и времени движения транспортных средств",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33215419"
+	},
+	"item": [
+		{
+			"name": "рейсы между станциями",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set('date', '2024-03-24');\r",
+							"pm.collectionVariables.get('date');\r",
+							"console.log(\"Pre-request\")"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}&format={{format}}&from={{from}}&to={{to}}&page=1&date={{date}}&format={{format}}",
+					"host": [
+						"{{baseURL}}&format={{format}}&from={{from}}&to={{to}}&page=1&date={{date}}&format={{format}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "- дата рейсов в прошлом",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}&format=json&from={{from}}&to={{to}}&page=1&date=2022-03-28",
+					"host": [
+						"{{baseURL}}&format=json&from={{from}}&to={{to}}&page=1&date=2022-03-28"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "рейсы от указанной станции",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/schedule/?apikey={{apikey}}&station={{station}}&transport_types=suburban&direction=на%20Москву",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"schedule",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "station",
+							"value": "{{station}}"
+						},
+						{
+							"key": "transport_types",
+							"value": "suburban"
+						},
+						{
+							"key": "direction",
+							"value": "на%20Москву"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "- не указан ключ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/schedule/?station={{station}}&transport_types=suburban&direction=на%20Москву",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"schedule",
+						""
+					],
+					"query": [
+						{
+							"key": "station",
+							"value": "{{station}}"
+						},
+						{
+							"key": "transport_types",
+							"value": "suburban"
+						},
+						{
+							"key": "direction",
+							"value": "на%20Москву"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "список ближайших станций",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/nearest_stations/?apikey={{apikey}}&format=json&lat=55.862804000&lng=37.682995000&distance=50",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"nearest_stations",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "lat",
+							"value": "55.862804000"
+						},
+						{
+							"key": "lng",
+							"value": "37.682995000"
+						},
+						{
+							"key": "distance",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "- короткая дистанция",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/nearest_stations/?apikey={{apikey}}&format=json&lat=55.862804000&lng=37.682995000&distance=0,1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"nearest_stations",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "format",
+							"value": "json"
+						},
+						{
+							"key": "lat",
+							"value": "55.862804000"
+						},
+						{
+							"key": "lng",
+							"value": "37.682995000"
+						},
+						{
+							"key": "distance",
+							"value": "0,1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "маршрут с указанием времени в пути и всех остановок",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/thread/?apikey={{apikey}}&format={{format}}&uid={{uid}}&lang={{lang}}&show_systems=all&date={{date}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"thread",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "format",
+							"value": "{{format}}"
+						},
+						{
+							"key": "uid",
+							"value": "{{uid}}"
+						},
+						{
+							"key": "lang",
+							"value": "{{lang}}"
+						},
+						{
+							"key": "show_systems",
+							"value": "all"
+						},
+						{
+							"key": "date",
+							"value": "{{date}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "- дата в далёком будущем",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{apikey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.rasp.yandex.net/v3.0/thread/?apikey={{apikey}}&format={{format}}&uid={{uid}}&lang={{lang}}&show_systems=all&date=2099-03-28",
+					"protocol": "https",
+					"host": [
+						"api",
+						"rasp",
+						"yandex",
+						"net"
+					],
+					"path": [
+						"v3.0",
+						"thread",
+						""
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{apikey}}"
+						},
+						{
+							"key": "format",
+							"value": "{{format}}"
+						},
+						{
+							"key": "uid",
+							"value": "{{uid}}"
+						},
+						{
+							"key": "lang",
+							"value": "{{lang}}"
+						},
+						{
+							"key": "show_systems",
+							"value": "all"
+						},
+						{
+							"key": "date",
+							"value": "2099-03-28"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{apikey}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.collectionVariables.set('date', '2024-03-24');\r",
+					"pm.collectionVariables.get('date');\r",
+					"console.log(\"Pre-request\")"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {\r",
+					"    pm.response.to.have.status(200);\r",
+					"});\r",
+					"pm.test(\"apykey\", function () {\r",
+					"    pm.expect(pm.response.text()).to.include(\"d2d93443-2d8a-48fb-bbd3-90d5e3311793\");\r",
+					"});\r",
+					"pm.test(\"station\", function () {\r",
+					"    pm.expect(pm.response.text()).to.include(\"s9601716\");\r",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apikey",
+			"value": "d2d93443-2d8a-48fb-bbd3-90d5e3311793",
+			"type": "string"
+		},
+		{
+			"key": "baseURL",
+			"value": "https://api.rasp.yandex.net/v3.0/search/?apikey=d2d93443-2d8a-48fb-bbd3-90d5e3311793",
+			"type": "string"
+		},
+		{
+			"key": "from",
+			"value": "s9601716",
+			"type": "string"
+		},
+		{
+			"key": "to",
+			"value": "s9600701",
+			"type": "string"
+		},
+		{
+			"key": "date",
+			"value": "&date=2024-03-28",
+			"type": "string"
+		},
+		{
+			"key": "transport_type",
+			"value": "&transport_types=suburban",
+			"type": "string"
+		},
+		{
+			"key": "station",
+			"value": "s9601716",
+			"type": "string"
+		},
+		{
+			"key": "latlng",
+			"value": "lat=55,8626438&lng=37,6832905&",
+			"type": "string"
+		},
+		{
+			"key": "uid",
+			"value": "6084_1_2000002_g24_4",
+			"type": "string"
+		},
+		{
+			"key": "lang",
+			"value": "ru_RU",
+			"type": "string"
+		},
+		{
+			"key": "format",
+			"value": "json",
+			"type": "string"
+		},
+		{
+			"key": "variable_key",
+			"value": ""
+		}
+	]
+}
