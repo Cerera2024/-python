@@ -1,6 +1,6 @@
 from selenium import webdriver
-from time import sleep
 from selenium.webdriver.common.by import By
+from time import sleep
 
 chrome = webdriver.Chrome()
 firefox = webdriver.Firefox()
@@ -24,7 +24,8 @@ try:
     input_field.send_keys("999")
     sleep(2)
 
-    except Exception as ex:
+except Exception as ex:
     print(ex)
 finally:
-    driver.quit()
+    chrome.quit()
+    firefox.quit()
